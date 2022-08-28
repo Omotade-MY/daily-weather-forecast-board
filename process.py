@@ -1,4 +1,6 @@
-import json
+import boto3
+from io import StringIO
+import os
 import csv
 import os
 import pandas as pd
@@ -96,6 +98,41 @@ def to_csv(filename: str, data):
         writer = csv.DictWriter(fp, data)
         writer.writeheader()
         writer.writerow( data)
+
+
+
+def create_filestreams(data):
+
+    """Create file streams for city, wetaher, astronomy, and hourly"""
+
+    
+    create_filestreams.has_been_called = True
+
+    global streams, writers, files
+    streams = {}
+    writers = {}
+    files = ['city', 'weather', 'astronomy', 'hourly']
+    for fl in files:
+
+        streams[fl] = StringIO()
+        writers[fl] = csv.DictWriter(streams[fl], data[fl])
+        writers[fl].writeheader()
+
+def load_file(data):
+    for fl in files:
+        writers[fl].writerow(data[fl])
+
+
+    
+
+def upload_files(bucket="weather-ng"):
+    
+    for filename in files:
+        file = streams[filename].getvalue()
+        s3_resource = boto3.resource('s3')
+        res = s3_resource.Object(bucket, filename+'.csv').put(Body=file)
+        #if res['ResponseMetadata']['HTTPStatusCode'] == 200:
+            
             
             
             
