@@ -9,17 +9,6 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 
 
-dag = DAG(dag_id = "Weather_01",
-        schedule_interval = '@once',
-        start_date  = datetime.datetime(2022, 8, 28,),
-        catchup = False,
-        )
-
-
-
-
-
-
 
 def process():
 
@@ -62,6 +51,13 @@ def process():
             print('Uploaded')
             break
 
+
+
+dag = DAG(dag_id = "Weather_01",
+        schedule_interval = '@once',
+        start_date  = datetime.datetime(2022, 8, 28,),
+        catchup = False,
+        )
 
 def display_logs():
     print("All Executed")
