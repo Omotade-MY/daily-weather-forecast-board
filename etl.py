@@ -4,10 +4,8 @@ from data_api import gen_state
 from process import ParseFile, create_filestreams, load_file, upload_files
 from data_api import gen_state
 import datetime
-
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-
 
 
 def process():
@@ -15,8 +13,8 @@ def process():
     state = pd.read_csv("list_of_capitals.csv").dropna()
     capitals = state['Capital'].values
 
-
     # Extractboto
+
     weather_data_gen = iter(gen_state(capitals))
     create_filestreams.has_been_called = False
     while True:
@@ -52,7 +50,6 @@ def process():
             break
 
 
-
 dag = DAG(dag_id = "Weather_01",
         schedule_interval = '@once',
         start_date  = datetime.datetime(2022, 8, 28,),
@@ -64,8 +61,6 @@ def display_logs():
 
 
 # Execute
-
-
 task_1_etl = PythonOperator(task_id = "etl_task",
                                 python_callable = process,
                                 dag = dag
