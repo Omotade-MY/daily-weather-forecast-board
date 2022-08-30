@@ -6,6 +6,7 @@ import os
 import pandas as pd
 from datetime import datetime
 from typing import Optional
+from credentials import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 from models import Astronomy, City, Weather
 
@@ -123,13 +124,20 @@ def load_file(data):
         writers[fl].writerow(data[fl])
 
 
-    
+def get_session():
+    session = boto3.Session(
+        aws_access_key_id=AWS_ACCESS_KEY_ID, 
+        aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+
+    return session
+
+
 
 def upload_files(bucket="weather-ng"):
-    
+    session = get_session()
     for filename in files:
         file = streams[filename].getvalue()
-        s3_resource = boto3.resource('s3')
+        s3_resource = session.resource('s3')
         res = s3_resource.Object(bucket, filename+'.csv').put(Body=file)
         #if res['ResponseMetadata']['HTTPStatusCode'] == 200:
             

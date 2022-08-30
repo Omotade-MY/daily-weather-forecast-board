@@ -9,6 +9,14 @@ from airflow.operators.python import PythonOperator
 
 
 def process():
+    """ 
+    ---------------
+    return None
+    --------------
+    
+    Executes all functions in the process module. This extracts, tansform and upload weather
+    data to s3 bucket in on call
+    """
 
     state = pd.read_csv("list_of_capitals.csv").dropna()
     capitals = state['Capital'].values
