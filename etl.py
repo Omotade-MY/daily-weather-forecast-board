@@ -3,14 +3,26 @@ import pandas as pd
 from data_api import gen_state
 from process import ParseFile, create_filestreams, load_file, upload_files
 from data_api import gen_state
+import datetime
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+
 
 def process():
+    """ 
+    ---------------
+    return None
+    --------------
+    
+    Executes all functions in the process module. This extracts, tansform and upload weather
+    data to s3 bucket in on call
+    """
 
     state = pd.read_csv("list_of_capitals.csv").dropna()
     capitals = state['Capital'].values
 
+    # Extractboto
 
-    # Extract
     weather_data_gen = iter(gen_state(capitals))
     create_filestreams.has_been_called = False
     while True:
@@ -46,8 +58,26 @@ def process():
             break
 
 
+dag = DAG(dag_id = "Weather_01",
+        schedule_interval = '@once',
+        start_date  = datetime.datetime(2022, 8, 28,),
+        catchup = False,
+        )
 
+def display_logs():
+    print("All Executed")
 
 
 # Execute
-process()
+task_1_etl = PythonOperator(task_id = "etl_task",
+                                python_callable = process,
+                                dag = dag
+                                )
+
+task_2_notification = PythonOperator(task_id = "Notify",
+                        python_callable = display_logs,
+                        dag = dag
+                        )
+
+task_1_etl >> task_2_notification
+                              
