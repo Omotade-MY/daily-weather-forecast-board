@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from datetime import datetime as dt
 
 class City(BaseModel):
     name: str
@@ -24,7 +25,7 @@ class Astronomy(BaseModel):
     
 class Weather(BaseModel):
     city: str = ""
-    date: str = ""  
+    date: str 
     maxtempC: float
     maxtempF: float
     mintempC: float
