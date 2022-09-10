@@ -4,8 +4,8 @@ from data_api import gen_state
 from process import ParseFile, create_filestreams, load_file, upload_files
 from data_api import gen_state
 import datetime
-from airflow import DAG
-from airflow.operators.python import PythonOperator
+#from airflow import DAG
+#from airflow.operators.python import PythonOperator
 
 
 def process():
@@ -42,7 +42,6 @@ def process():
             data['city'] = city.dict()
             data['weather'] = weather.dict()
             data['astronomy'] = astronomy.dict()
-            data['hourly'] = hourly
 
             # Load to s3
 
@@ -57,7 +56,7 @@ def process():
             print('Uploaded')
             break
 
-
+"""
 dag = DAG(dag_id = "Weather_01",
         schedule_interval = '@once',
         start_date  = datetime.datetime(2022, 8, 28,),
@@ -81,3 +80,6 @@ task_2_notification = PythonOperator(task_id = "Notify",
 
 task_1_etl >> task_2_notification
                               
+"""
+
+process()

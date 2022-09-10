@@ -14,7 +14,7 @@ class City(BaseModel):
 
 class Astronomy(BaseModel):
     city: str = ""
-    date: dt
+    date: str = ""
     sunrise: str
     sunset: str
     moonrise: str
@@ -25,7 +25,7 @@ class Astronomy(BaseModel):
     
 class Weather(BaseModel):
     city: str = ""
-    date: dt  
+    date: str 
     maxtempC: float
     maxtempF: float
     mintempC: float
