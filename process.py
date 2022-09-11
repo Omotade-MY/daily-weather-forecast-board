@@ -140,7 +140,7 @@ def transform(files_data):
     left_on = 'city', right_on= 'city').drop_duplicates()
     
     
-    data = data.merge(files_data['city'][['name', 'latitude','longitude']], right_on='name', left_on='city').drop_duplicates()
+    data = data.merge(files_data['city'][['name', 'latitude','longitude','country']], right_on='name', left_on='city').drop_duplicates()
 
     dropables = ['date', 'maxtempF', 'avgtempF','mintempF','moonrise','totalSnow_cm', 'moonset','moon_illumination',
     "moon_phase", "uvIndex","name"]
@@ -151,6 +151,9 @@ def transform(files_data):
     data['day_name'] = data['date'].apply(lambda dt: dt.day_name())
     data['month'] = data['date'].apply(lambda dt: dt.month_name())
     data['year'] = data['date'].apply(lambda dt: dt.year)
+    data["period"] = datetime.now().strftime("%p")
+    data['period'] = data['period'].apply(lambda val: "Day" if val == "AM" else "Night")
+
 
     
     data = data.drop(dropables, axis=1)
