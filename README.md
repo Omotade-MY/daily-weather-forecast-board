@@ -6,9 +6,13 @@ Extracts daily Nigeria weather forecast from OpenWeatherAPI and display on a das
 * ETL process is ochestrated and monitored using airflow
 
 
-✔ requests
-✔ json
-✔ pandas
-✔ aws s3 (boto3)
-✔ aws ec2
-✔ apache-airflow
+✔ requests \
+✔ json \
+✔ BeautifulSoup \
+✔ heroku cloud\
+✔ pandas \
+✔ aws s3 (boto3) \
+✔ apache-airflow \
+✔ Power BI
+
+![alt text](http://url/to/img.png)
