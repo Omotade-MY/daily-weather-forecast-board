@@ -1,5 +1,5 @@
 # daily-weather-forecast-board
-Extracts daily Nigeria weather forecast from OpenWeatherAPI and display on a dashboard. The steps inlude\
+Extracts daily Worldweather forecast from OpenWeatherAPI and display on a dashboard. The steps inlude\
 * Extraction of data from API
 * Transform and Load data into data warehouse (snowflake, BigQuery)
 * Read data from data warehouse using power BI and build a wether dash board
@@ -8,7 +8,12 @@ Extracts daily Nigeria weather forecast from OpenWeatherAPI and display on a das
 
 ✔ requests
 ✔ json
+✔ apache-airflow 
 ✔ pandas
-✔ aws s3 (boto3)
+✔ aws s3 
+✔ boto3
 ✔ aws ec2
-✔ apache-airflow
+✔ Power BI
+
+
+![Workflow diagram]('workflow diagram.png")
