@@ -1,14 +1,22 @@
 # daily-weather-forecast-board
-Extracts daily Nigeria weather forecast from OpenWeatherAPI and display on a dashboard. The steps inlude\
+Extracts daily Nigeria weather forecast from --- and display on a dashboard. The steps inlude\
+
 * Extraction of data from API
-* Transform and Load data into data warehouse (snowflake, BigQuery)
-* Read data from data warehouse using power BI and build a wether dash board
-* ETL process is ochestrated and monitored using airflow
+* Transform and Load data into data stroage (s3 bucket)
+* ochestration of ETL process and work flow monitoring using airflow
+* Send notification for state execution 
+* Read data from data storage using power BI and build a weather dash board
+* Publish dashboard to Power BI serice
 
-
-✔ requests
+✔ Requests
 ✔ json
-✔ pandas
-✔ aws s3 (boto3)
-✔ aws ec2
-✔ apache-airflow
+✔ Pandas
+✔ AWS s3 
+✔ boto3
+✔ Apache-airflow
+✔ Microsoft Power BI
+✔ 
+✔
+
+> The work flow diagram is below
+    ![Workflow Diagram](work-flow-diagram.png)
