@@ -1,6 +1,5 @@
-from webbrowser import get
 import boto3
-from io import StringIO, BytesIO
+from io import StringIO
 import os
 import csv
 import os

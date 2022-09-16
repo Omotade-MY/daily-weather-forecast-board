@@ -1,5 +1,5 @@
 # daily-weather-forecast-board
-Extracts daily Nigeria weather forecast from --- and display on a dashboard. The steps inlude\
+Extracts daily Nigeria weather forecast from WorldWeather API and display on a dashboard. The steps inlude\
 
 * Extraction of data from API
 * Transform and Load data into data stroage (s3 bucket)
@@ -8,15 +8,18 @@ Extracts daily Nigeria weather forecast from --- and display on a dashboard. The
 * Read data from data storage using power BI and build a weather dash board
 * Publish dashboard to Power BI serice
 
-✔ Requests
-✔ json
-✔ Pandas
-✔ AWS s3 
-✔ boto3
-✔ Apache-airflow
-✔ Microsoft Power BI
-✔ 
+✔ Requests \
+✔ json \
+✔ Pandas \
+✔ AWS s3 \
+✔ boto3 \
+✔ Apache-airflow \
+✔ Microsoft Power BI \
+✔ Pydantic
 ✔
 
 > The work flow diagram is below
     ![Workflow Diagram](work-flow-diagram.png)
+
+
+Here is a link to medium post on the project written by partner @Olanbiwoninu Waliulahi Ayomide
