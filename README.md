@@ -20,3 +20,6 @@ Extracts daily Nigeria weather forecast from WorldWeather API and display on a d
 
 > The work flow diagram is below
     ![Workflow Diagram](work-flow-diagram.png)
+
+
+Here is a link to medium post on the project written by partner @Olanbiwoninu Waliulahi Ayomide
